@@ -1,3 +1,4 @@
+import { default as default_edd78da9f0d78b8bc0b6139446547a5c } from '../../../components/admin/DeleteUnusedMedia'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -25,10 +26,12 @@ import { default as default_3af632a115f7ee897e45ba39772a8be1 } from '../../../co
 import { Logo as Logo_bedc1e06f20d365eaa4738f78ed07569 } from '../../../components/admin/Branding'
 import { Welcome as Welcome_bedc1e06f20d365eaa4738f78ed07569 } from '../../../components/admin/Branding'
 import { AdminHomeLink as AdminHomeLink_bedc1e06f20d365eaa4738f78ed07569 } from '../../../components/admin/Branding'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
+  "/components/admin/DeleteUnusedMedia#default": default_edd78da9f0d78b8bc0b6139446547a5c,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -56,5 +59,6 @@ export const importMap = {
   "/components/admin/Branding#Logo": Logo_bedc1e06f20d365eaa4738f78ed07569,
   "/components/admin/Branding#Welcome": Welcome_bedc1e06f20d365eaa4738f78ed07569,
   "/components/admin/Branding#AdminHomeLink": AdminHomeLink_bedc1e06f20d365eaa4738f78ed07569,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
