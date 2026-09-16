@@ -4,7 +4,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 
 const heroImage =
-  '/api/media/file/WhatsApp%20Image%202026-09-05%20at%2018.42.12.jpeg'
+  '/api/media/file/anasayfa-kapak.png'
 
 export const dynamic = 'force-dynamic'
 
