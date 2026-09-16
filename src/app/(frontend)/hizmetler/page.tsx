@@ -126,7 +126,7 @@ export default async function ServicesPage() {
 
                         <p className="mt-4 text-xs tracking-[0.08em] text-[#756b5b]">
                           {sectionCount > 0
-                            ? `${sectionCount} ALT BAŞLIK`
+                            ? `${sectionCount} farklı seçenek`
                             : 'DETAYLARI KEŞFET'}
                         </p>
                       </div>

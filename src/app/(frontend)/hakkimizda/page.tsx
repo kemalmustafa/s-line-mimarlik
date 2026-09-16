@@ -68,16 +68,16 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] bg-[#ded9cf]">
-          <Image
-            src="/api/media/file/WhatsApp%20Image%202026-09-05%20at%2018.42.12.jpeg"
-            alt="S-Line Dekorasyon iç mekân uygulaması"
-            fill
-            loading="eager"
-            sizes="(max-width: 1023px) 100vw, 50vw"
-            className="object-cover object-[60%_center]"
-          />
-        </div>
+        <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-[3px] bg-[#ded9cf] p-8">
+  <Image
+    src="/api/media/file/hakkimizda.jpeg"
+    alt="S-Line Dekorasyon logosu"
+    fill
+    loading="eager"
+    sizes="280px"
+    className="object-contain"
+  />
+</div>
       </section>
 
       <section
