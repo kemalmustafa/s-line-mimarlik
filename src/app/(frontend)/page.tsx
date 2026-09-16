@@ -44,6 +44,7 @@ export default async function HomePage() {
     
     alt="Duvar çıtaları ve ahşap zemin kullanılan S-Line iç mekân uygulaması"
     fill
+    quality={92}
     loading="eager"
     sizes="100vw"
     className="home-hero__image"
