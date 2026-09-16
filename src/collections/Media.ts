@@ -1,8 +1,9 @@
 import { APIError, type CollectionConfig } from 'payload'
 
-// Sayfalarda doğrudan dosya bağlantısıyla kullanılan görseller.
+// Kodda doğrudan dosya bağlantısıyla kullanılan görseller.
 const protectedFilenames = new Set([
   'WhatsApp Image 2026-09-05 at 18.42.12.jpeg',
+  'anasayfa-kapak.png',
 ])
 
 export const Media: CollectionConfig = {
@@ -37,7 +38,11 @@ export const Media: CollectionConfig = {
           overrideAccess: true,
         })
 
-        if (media.filename && protectedFilenames.has(media.filename)) {
+        // Ana sayfa veya başka bir kod sayfasında doğrudan kullanılan dosyalar.
+        if (
+          media.filename &&
+          protectedFilenames.has(media.filename)
+        ) {
           throw new APIError(
             'Görsel korunuyor: Site sayfalarında kullanılıyor.',
             409,
@@ -46,38 +51,60 @@ export const Media: CollectionConfig = {
           )
         }
 
-        for (const collection of ['projects', 'services'] as const) {
-          // Yayın durumu filtrelenmez; taslaklar da korunur.
-          // Bu kontrol tüm ilişkileri görebilmeli.
-          const references = await req.payload.find({
-            collection,
-            req,
-            overrideAccess: true,
-            depth: 0,
-            limit: 1,
-            pagination: false,
-            select: {
-              title: true,
-            },
-            where: {
-              or: [
-                { cover: { equals: id } },
-                { 'gallery.image': { equals: id } },
-              ],
-            },
-          })
+        // Proje kapağı veya proje galerisi kontrolü.
+        const projectReferences = await req.payload.find({
+          collection: 'projects',
+          req,
+          overrideAccess: true,
+          depth: 0,
+          limit: 1,
+          pagination: false,
+          select: {
+            title: true,
+          },
+          where: {
+            or: [
+              { cover: { equals: id } },
+              { 'gallery.image': { equals: id } },
+            ],
+          },
+        })
 
-          if (references.docs.length > 0) {
-            const document = references.docs[0]
-            const label = collection === 'projects' ? 'Projede' : 'Hizmette'
+        if (projectReferences.docs.length > 0) {
+          throw new APIError(
+            `Görsel korunuyor: Projede kullanılıyor (${projectReferences.docs[0].title}).`,
+            409,
+            null,
+            true,
+          )
+        }
 
-            throw new APIError(
-              `Görsel korunuyor: ${label} kullanılıyor (${document.title}).`,
-              409,
-              null,
-              true,
-            )
-          }
+        // Hizmet kartı kapağı ve hizmetlerin alt başlık galerileri kontrolü.
+        const serviceReferences = await req.payload.find({
+          collection: 'services',
+          req,
+          overrideAccess: true,
+          depth: 0,
+          limit: 1,
+          pagination: false,
+          select: {
+            title: true,
+          },
+          where: {
+            or: [
+              { cover: { equals: id } },
+              { 'serviceSections.images': { equals: id } },
+            ],
+          },
+        })
+
+        if (serviceReferences.docs.length > 0) {
+          throw new APIError(
+            `Görsel korunuyor: Hizmette kullanılıyor (${serviceReferences.docs[0].title}).`,
+            409,
+            null,
+            true,
+          )
         }
       },
     ],
