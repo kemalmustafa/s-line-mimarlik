@@ -2,15 +2,19 @@ import type { CollectionConfig } from 'payload'
 
 export const Services: CollectionConfig = {
   slug: 'services',
+
   labels: {
     singular: 'Hizmet',
     plural: 'Hizmetler',
   },
+
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'sortOrder', 'status'],
   },
+
   defaultSort: 'sortOrder',
+
   access: {
     read: ({ req: { user } }) => {
       if (user) return true
@@ -21,10 +25,12 @@ export const Services: CollectionConfig = {
         },
       }
     },
+
     create: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),
   },
+
   fields: [
     {
       type: 'tabs',
@@ -38,90 +44,85 @@ export const Services: CollectionConfig = {
               type: 'text',
               required: true,
               admin: {
-                placeholder: 'Duvar Uygulamaları',
+                placeholder: 'Cephe Sistemleri',
+              },
+            },
+            {
+              name: 'cover',
+              label: 'Hizmet kartı görseli',
+              type: 'upload',
+              relationTo: 'media',
+              admin: 
+              {
+                  description:
+                  'Hizmetlerimiz sayfasındaki kartta gösterilir. İsteğe bağlıdır.',
               },
             },
             {
               name: 'category',
-              label: 'Kart üst etiketi',
+              label: 'Kısa üst etiket',
               type: 'text',
               admin: {
-                placeholder: 'UYGULAMA',
-                description: 'Kartın fotoğrafı üzerinde gösterilir.',
+                placeholder: 'S-LINE DEKORASYON',
+                description:
+                  'İsteğe bağlıdır; detay sayfasındaki hizmet başlığının üstünde görünür.',
               },
             },
             {
               name: 'description',
-              label: 'Hizmet açıklaması',
+              label: 'Kısa açıklama',
               type: 'richText',
-              required: true,
               admin: {
                 description:
-                  'Hizmetin kapsamını, kullanılan malzemeleri ve çalışma sürecini anlatın.',
+                  'İsteğe bağlıdır; hizmet başlığının altında görünür.',
               },
             },
           ],
         },
+
         {
-          label: 'Görseller',
+          label: 'Alt başlıklar ve fotoğraflar',
           fields: [
             {
-              name: 'cover',
-              label: 'Kapak görseli',
-              type: 'upload',
-              relationTo: 'media',
-              required: true,
-              admin: {
-                description:
-                  'Hizmet kartında ve detay sayfasının başında gösterilir.',
-              },
-            },
-            {
-              name: 'galleryUploader',
-              type: 'ui',
-              admin: {
-                components: {
-                  Field: {
-                    path: '/components/admin/GalleryUploader',
-                    clientProps: {
-                      collectionSlug: 'services',
-                    },
-                  },
-                },
-              },
-            },
-            {
-              name: 'gallery',
-              label: 'Hizmet galerisi',
+              name: 'serviceSections',
+              label: 'Alt başlıklar',
               type: 'array',
+              minRows: 1,
               labels: {
-                singular: 'Fotoğraf',
-                plural: 'Fotoğraflar',
+                singular: 'Alt başlık',
+                plural: 'Alt başlıklar',
               },
               admin: {
+                initCollapsed: true,
                 description:
-                  'Fotoğrafları soldaki tutamaçla sıralayabilirsiniz.',
+                  'Her alt başlığa bir veya birden fazla fotoğraf ekleyebilirsiniz.',
               },
               fields: [
                 {
-                  name: 'image',
-                  label: 'Görsel',
-                  type: 'upload',
-                  relationTo: 'media',
+                  name: 'title',
+                  label: 'Alt başlık adı',
+                  type: 'text',
                   required: true,
+                  admin: {
+                    placeholder: 'Örneğin: Betopan',
+                  },
                 },
                 {
-                  name: 'caption',
-                  label: 'Fotoğraf açıklaması',
-                  type: 'text',
+                  name: 'images',
+                  label: 'Fotoğraflar',
+                  type: 'upload',
+                  relationTo: 'media',
+                  hasMany: true,
                   admin: {
-                    description: 'İsteğe bağlıdır.',
+                    description:
+                      'Bir veya birden fazla fotoğraf seçebilirsiniz.',
                   },
                 },
               ],
             },
           ],
         },
+
         {
           label: 'Yayın ayarları',
           fields: [
@@ -133,7 +134,7 @@ export const Services: CollectionConfig = {
               index: true,
               admin: {
                 description:
-                  'Boş bırakırsanız hizmet adından oluşturulur. Mevcut URL’yi değiştirmek eski bağlantıyı bozar.',
+                  'Boş bırakırsanız hizmet adından oluşturulur.',
               },
               hooks: {
                 beforeValidate: [
@@ -166,14 +167,6 @@ export const Services: CollectionConfig = {
                   },
                 ],
               },
-              validate: (value: string | null | undefined) => {
-                if (value == null || value.trim() === '') return true
-
-                return (
-                  /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) ||
-                  'Küçük İngilizce harfler, sayılar ve tire kullanın.'
-                )
-              },
             },
             {
               name: 'sortOrder',
@@ -183,19 +176,14 @@ export const Services: CollectionConfig = {
               required: true,
               min: 0,
               admin: {
-                description:
-                  'Küçük sayı önce gösterilir. Örneğin: 1, 2, 3.',
+                description: 'Küçük sayı önce gösterilir.',
               },
-              validate: (value: number | null | undefined) =>
-                (typeof value === 'number' &&
-                  Number.isInteger(value) &&
-                  value >= 0) ||
-                'Sıfır veya pozitif bir tam sayı girin.',
             },
           ],
         },
       ],
     },
+
     {
       name: 'status',
       label: 'Yayın durumu',

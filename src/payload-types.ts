@@ -248,13 +248,17 @@ export interface Service {
   id: number;
   title: string;
   /**
-   * Kartın fotoğrafı üzerinde gösterilir.
+   * Hizmetlerimiz sayfasındaki kartta gösterilir. İsteğe bağlıdır.
+   */
+  cover?: (number | null) | Media;
+  /**
+   * İsteğe bağlıdır; detay sayfasındaki hizmet başlığının üstünde görünür.
    */
   category?: string | null;
   /**
-   * Hizmetin kapsamını, kullanılan malzemeleri ve çalışma sürecini anlatın.
+   * İsteğe bağlıdır; hizmet başlığının altında görünür.
    */
-  description: {
+  description?: {
     root: {
       type: string;
       children: {
@@ -268,30 +272,26 @@ export interface Service {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   /**
-   * Hizmet kartında ve detay sayfasının başında gösterilir.
+   * Her alt başlığa bir veya birden fazla fotoğraf ekleyebilirsiniz.
    */
-  cover: number | Media;
-  /**
-   * Fotoğrafları soldaki tutamaçla sıralayabilirsiniz.
-   */
-  gallery?:
+  serviceSections?:
     | {
-        image: number | Media;
+        title: string;
         /**
-         * İsteğe bağlıdır.
+         * Bir veya birden fazla fotoğraf seçebilirsiniz.
          */
-        caption?: string | null;
+        images?: (number | Media)[] | null;
         id?: string | null;
       }[]
     | null;
   /**
-   * Boş bırakırsanız hizmet adından oluşturulur. Mevcut URL’yi değiştirmek eski bağlantıyı bozar.
+   * Boş bırakırsanız hizmet adından oluşturulur.
    */
   slug?: string | null;
   /**
-   * Küçük sayı önce gösterilir. Örneğin: 1, 2, 3.
+   * Küçük sayı önce gösterilir.
    */
   sortOrder: number;
   status: 'draft' | 'published';
@@ -474,14 +474,14 @@ export interface ProjectsSelect<T extends boolean = true> {
  */
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
+  cover?: T;
   category?: T;
   description?: T;
-  cover?: T;
-  gallery?:
+  serviceSections?:
     | T
     | {
-        image?: T;
-        caption?: T;
+        title?: T;
+        images?: T;
         id?: T;
       };
   slug?: T;
