@@ -1,5 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Hakkımızda | S-Line Dekorasyon',
@@ -28,7 +32,23 @@ const principles = [
   },
 ]
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({
+    collection: 'media',
+    overrideAccess: false,
+    depth: 0,
+    limit: 1,
+    pagination: false,
+    where: { filename: { equals: 'hakkimizda.jpeg' } },
+    select: { filename: true, updatedAt: true },
+  })
+  const logo = docs[0]
+  // The version changes only when this media record is updated.
+  const logoSrc = logo?.filename
+    ? `/api/media/file/${encodeURIComponent(logo.filename)}?v=${encodeURIComponent(logo.updatedAt)}`
+    : '/api/media/file/hakkimizda.jpeg'
+
   return (
     <main className="bg-[#f4f2ed] text-[#202b33]">
       <section className="mx-auto grid max-w-[1440px] gap-10 px-6 py-14 md:px-12 md:py-20 lg:grid-cols-2 lg:items-center lg:gap-16">
@@ -48,13 +68,13 @@ export default function AboutPage() {
           <div className="mt-8 space-y-5 text-base leading-8 text-[#69665f]">
             <p>
               S-Line Dekorasyon olarak yaşam ve çalışma
-              alanlarını estetik, işlevsel ve kaliteli
-              mekânlara dönüştürüyoruz.
+               alanlarını estetik, fonksiyonel ve kaliteli
+               mekânlara dönüştürüyoruz.
             </p>
 
             <p>
               Dekorasyon, yenileme, iç mimari ve anahtar
-              teslim uygulama süreçlerinde tasarım
+              teslim uygulama süreçlerinde; tasarım
               anlayışımızı kaliteli malzeme ve titiz
               işçilikle bir araya getiriyoruz.
             </p>
@@ -65,12 +85,17 @@ export default function AboutPage() {
               ele alıyor, mekânın karakterine uygun çözümler
               geliştiriyoruz.
             </p>
+            <p>
+              Amacımız yalnızca bir alanı yenilemek değil;
+              kullanışlı, modern ve size ait hissettiren
+              yaşam alanları oluşturmak.
+            </p>
           </div>
         </div>
 
         <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-[3px] bg-[#ded9cf] p-8">
   <Image
-    src="/api/media/file/hakkimizda.jpeg"
+    src={logoSrc}
     alt="S-Line Dekorasyon logosu"
     fill
     loading="eager"
