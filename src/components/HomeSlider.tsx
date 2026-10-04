@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 const slides = [
   {
-    image: '/api/media/file/anasayfa-kapak-1.png?',
+    image: '/api/media/file/anasayfa-kapak-1.png',
     alt: 'S-Line Dekorasyon iç mekân uygulaması',
     title: 'Yeni bir dekorasyon!',
     accent: 'Yeni bir yaşam.',
@@ -14,7 +14,7 @@ const slides = [
       'Yaşam alanlarınıza estetik, konfor ve işlevsellik katıyoruz. Tasarımdan uygulamaya, her detayda özen.',
   },
   {
-    image: '/api/media/file/anasayfa-kapak-4.png?v=2',
+    image: '/api/media/file/anasayfa-kapak-4.png',
     alt: 'S-Line Dekorasyon uygulama örneği',
     title: 'Size özel mekânlar.',
     accent: 'İncelikle düşünülmüş.',
@@ -22,7 +22,7 @@ const slides = [
       'Tarzınızı ve ihtiyaçlarınızı dinliyor, kendinizi ait hissedeceğiniz yaşam alanları tasarlıyoruz.',
   },
   {
-    image: '/api/media/file/anasayfa-kapak-3.png',
+    image: '/api/media/file/anasayfa-kapak-3.png?v=2',
     alt: 'S-Line Dekorasyon proje detayları',
     title: 'Her detayda özen.',
     accent: 'Her dokunuşta fark.',
