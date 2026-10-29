@@ -32,6 +32,23 @@ const slides = [
   
 ]
 
+function ArrowUpRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 13 13 3" />
+      <path d="M6 3h7v7" />
+    </svg>
+  )
+}
+
 export default function HomeSlider() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -123,11 +140,11 @@ export default function HomeSlider() {
 
           <div className="hero-slider__actions">
             <Link href="/iletisim" className="hero-slider__primary">
-              Projenizi konuşalım <span aria-hidden="true">↗</span>
+              Projenizi konuşalım <ArrowUpRightIcon />
             </Link>
 
             <Link href="/hizmetler" className="hero-slider__secondary">
-              Hizmetlerimizi inceleyin <span aria-hidden="true">↗</span>
+              Hizmetlerimizi inceleyin <ArrowUpRightIcon />
             </Link>
           </div>
         </div>
