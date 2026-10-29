@@ -6,7 +6,7 @@ import SiteHeader from '@/components/SiteHeader'
 export const metadata: Metadata = {
   title: 'S-Line Mimarlık | Tasarım ve Uygulama',
   description:
-    'S-Line Mimarlık: mimari tasarım, iç mekân ve uygulama projeleri.',
+    'S-Line Dekorasyon: mimari tasarım, iç mekân ve uygulama hizmetleri.',
 }
 
 export default function RootLayout({
@@ -122,9 +122,6 @@ export default function RootLayout({
           >
             <a href="/hizmetler" className="text-white hover:text-[#aebdcb]">
               Hizmetlerimiz
-            </a>
-            <a href="/projeler" className="text-white hover:text-[#aebdcb]">
-              Projelerimiz
             </a>
             <a href="/iletisim" className="text-white hover:text-[#aebdcb]">
               İletişim

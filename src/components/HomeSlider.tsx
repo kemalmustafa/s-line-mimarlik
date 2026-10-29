@@ -126,8 +126,8 @@ export default function HomeSlider() {
               Projenizi konuşalım <span aria-hidden="true">↗</span>
             </Link>
 
-            <Link href="/projeler" className="hero-slider__secondary">
-              Projelerimizi inceleyin <span aria-hidden="true">↗</span>
+            <Link href="/hizmetler" className="hero-slider__secondary">
+              Hizmetlerimizi inceleyin <span aria-hidden="true">↗</span>
             </Link>
           </div>
         </div>

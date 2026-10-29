@@ -6,9 +6,9 @@ import config from '@/payload.config'
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: 'Hakkımızda | S-Line Dekorasyon',
+  title: 'Samsun Dekorasyon ve İç Mimari | S-Line Dekorasyon',
   description:
-    'S-Line Dekorasyon’un tasarım, yenileme ve uygulama yaklaşımını keşfedin.',
+    'S-Line Dekorasyon, Samsun’da dekorasyon, yenileme, iç mimari ve anahtar teslim uygulama hizmetleri sunar.',
 }
 
 const principles = [
@@ -67,28 +67,24 @@ export default async function AboutPage() {
 
           <div className="mt-8 space-y-5 text-base leading-8 text-[#69665f]">
             <p>
-              S-Line Dekorasyon olarak yaşam ve çalışma
-               alanlarını estetik, fonksiyonel ve kaliteli
-               mekânlara dönüştürüyoruz.
+              S-Line Dekorasyon, Samsun’da ev, ofis, mağaza ve ticari alanlar
+              için dekorasyon, yenileme, iç mimari ve anahtar teslim uygulama
+              hizmetleri sunar. Yaşam ve çalışma alanlarını estetik,
+              fonksiyonel ve kaliteli mekânlara dönüştürürken tasarım
+              anlayışımızı kaliteli malzeme ve titiz işçilikle bir araya
+              getiriyoruz. Her projeyi kendi ihtiyaçları doğrultusunda ele
+              alıyor, mekânın karakterine uygun çözümler geliştiriyoruz.
+              Amacımız yalnızca bir alanı yenilemek değil; kullanışlı, modern
+              ve size ait hissettiren yaşam alanları oluşturmak.
             </p>
 
             <p>
-              Dekorasyon, yenileme, iç mimari ve anahtar
-              teslim uygulama süreçlerinde; tasarım
-              anlayışımızı kaliteli malzeme ve titiz
-              işçilikle bir araya getiriyoruz.
-            </p>
-
-            <p>
-              Evlerden ofislere, mağazalardan ticari alanlara
-              kadar her projeyi kendi ihtiyaçları doğrultusunda
-              ele alıyor, mekânın karakterine uygun çözümler
-              geliştiriyoruz.
-            </p>
-            <p>
-              Amacımız yalnızca bir alanı yenilemek değil;
-              kullanışlı, modern ve size ait hissettiren
-              yaşam alanları oluşturmak.
+              Her projeyi yalnızca bir uygulama olarak değil, bir bütün olarak
+              ele alıyoruz. Mekânın ihtiyaçlarını, kullanım amacını ve estetik
+              beklentilerini değerlendirerek doğru malzeme, doğru uygulama ve
+              doğru detayları bir araya getiriyoruz. Tasarımdan uygulamaya
+              kadar tüm süreçte kalite, işçilik ve uyumu ön planda tutarak
+              uzun ömürlü ve modern yaşam alanları oluşturuyoruz.
             </p>
           </div>
         </div>
