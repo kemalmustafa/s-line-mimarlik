@@ -11,6 +11,24 @@ const links = [
   { href: '/iletisim', label: 'İletişim' },
 ]
 
+function ArrowUpRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="sline-menu-links__arrow"
+    >
+      <path d="M3 13 13 3" />
+      <path d="M6 3h7v7" />
+    </svg>
+  )
+}
+
 export default function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -155,7 +173,7 @@ export default function SiteHeader() {
                 }}
               >
                 <span>{link.label}</span>
-                <span aria-hidden="true">↗</span>
+                <ArrowUpRightIcon />
               </Link>
             ))}
           </nav>
