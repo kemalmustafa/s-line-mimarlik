@@ -42,7 +42,9 @@ export default function RootLayout({
           className="mt-8 inline-flex items-center gap-3 border-b border-[#aebdcb]/60 pb-2 text-sm text-white transition-colors hover:border-white hover:text-white"
         >
           Instagram&apos;da takip edin
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true" className="sline-external-arrow">
+            ↗
+          </span>
         </a>
       </div>
 

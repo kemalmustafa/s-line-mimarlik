@@ -120,7 +120,10 @@ export default function SiteHeader() {
           href="/iletisim"
           className="sline-header__contact"
         >
-          Projenizi konuşalım <span aria-hidden="true">↗</span>
+          Projenizi konuşalım{' '}
+          <span aria-hidden="true" className="sline-external-arrow">
+            ↗
+          </span>
         </Link>
 
         <button

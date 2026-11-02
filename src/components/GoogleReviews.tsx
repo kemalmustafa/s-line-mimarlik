@@ -149,7 +149,10 @@ export default async function GoogleReviews() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Yorumu gör ↗
+                      Yorumu gör{' '}
+                      <span aria-hidden="true" className="sline-external-arrow">
+                        ↗
+                      </span>
                     </a>
                   )}
                 </div>
@@ -168,7 +171,10 @@ export default async function GoogleReviews() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Google’da tüm yorumları gör ↗
+              Google’da tüm yorumları gör{' '}
+              <span aria-hidden="true" className="sline-external-arrow">
+                ↗
+              </span>
             </a>
           )}
         </div>

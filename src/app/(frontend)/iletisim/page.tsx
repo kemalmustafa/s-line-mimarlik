@@ -104,6 +104,19 @@ function ArrowUpRightIcon() {
   )
 }
 
+function ResponsiveArrow() {
+  return (
+    <>
+      <span aria-hidden="true" className="sline-desktop-arrow">
+        ↗
+      </span>
+      <span aria-hidden="true" className="sline-mobile-arrow">
+        <ArrowUpRightIcon />
+      </span>
+    </>
+  )
+}
+
 export default function ContactPage() {
   return (
     <main className="min-h-[75vh] bg-[#f4f2ed] text-[#202b33]">
@@ -180,7 +193,7 @@ export default function ContactPage() {
                   aria-hidden="true"
                   className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#d8d0c2] transition-colors group-hover:border-[#142233] group-hover:bg-[#142233] group-hover:text-white"
                 >
-                  <ArrowUpRightIcon />
+                  <ResponsiveArrow />
                 </span>
               </a>
             ))}

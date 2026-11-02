@@ -177,7 +177,10 @@ export default async function AboutPage() {
             href="/iletisim"
             className="inline-flex items-center gap-8 rounded-[3px] bg-[#142233] px-6 py-4 text-sm text-white hover:bg-[#30415b] hover:text-white"
           >
-            İletişime geçin <span aria-hidden="true">↗</span>
+            İletişime geçin{' '}
+            <span aria-hidden="true" className="sline-external-arrow">
+              ↗
+            </span>
           </Link>
         </div>
       </section>

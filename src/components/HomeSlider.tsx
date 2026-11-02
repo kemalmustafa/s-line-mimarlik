@@ -49,6 +49,19 @@ function ArrowUpRightIcon() {
   )
 }
 
+function ResponsiveArrow() {
+  return (
+    <>
+      <span aria-hidden="true" className="sline-desktop-arrow">
+        ↗
+      </span>
+      <span aria-hidden="true" className="sline-mobile-arrow">
+        <ArrowUpRightIcon />
+      </span>
+    </>
+  )
+}
+
 export default function HomeSlider() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -140,11 +153,11 @@ export default function HomeSlider() {
 
           <div className="hero-slider__actions">
             <Link href="/iletisim" className="hero-slider__primary">
-              Projenizi konuşalım <ArrowUpRightIcon />
+              Projenizi konuşalım <ResponsiveArrow />
             </Link>
 
             <Link href="/hizmetler" className="hero-slider__secondary">
-              Hizmetlerimizi inceleyin <ArrowUpRightIcon />
+              Hizmetlerimizi inceleyin <ResponsiveArrow />
             </Link>
           </div>
         </div>

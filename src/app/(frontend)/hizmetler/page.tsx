@@ -135,7 +135,7 @@ export default async function ServicesPage() {
                         aria-hidden="true"
                         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d8d0c2] text-xl transition-colors duration-300 group-hover:border-[#142233] group-hover:bg-[#142233] group-hover:text-white"
                       >
-                        ↗
+                        <span className="sline-external-arrow">↗</span>
                       </span>
                     </div>
                   </div>
@@ -160,7 +160,10 @@ export default async function ServicesPage() {
               href="/iletisim"
               className="inline-flex items-center gap-8 self-start rounded-[3px] bg-[#142233] px-6 py-4 text-sm text-white hover:bg-[#30415b] hover:text-white"
             >
-              İletişime geçin <span aria-hidden="true">↗</span>
+              İletişime geçin{' '}
+              <span aria-hidden="true" className="sline-external-arrow">
+                ↗
+              </span>
             </Link>
           </div>
         </section>

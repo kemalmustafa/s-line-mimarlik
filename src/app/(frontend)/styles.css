@@ -67,6 +67,45 @@ a:focus-visible {
   outline-color: #647b96;
 }
 
+@media (max-width: 767px) {
+  .sline-desktop-arrow {
+    display: none;
+  }
+
+  .sline-mobile-arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .sline-external-arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 1em;
+    color: currentColor;
+    font-family: "Segoe UI Symbol", Arial, sans-serif;
+    font-size: 1.1em;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .sline-desktop-arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI Symbol", Arial, sans-serif;
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .sline-mobile-arrow {
+    display: none;
+  }
+}
+
 ::selection {
   background: #dbe2ea;
   color: #142233;

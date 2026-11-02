@@ -190,7 +190,9 @@ export default async function ServiceDetailPage({
             className="inline-flex items-center gap-8 rounded-[3px] bg-[#142233] px-6 py-4 text-sm text-white hover:bg-[#30415b] hover:text-white"
           >
             Bu hizmet hakkında konuşalım
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true" className="sline-external-arrow">
+              ↗
+            </span>
           </Link>
         </div>
       </div>
