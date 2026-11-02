@@ -7,6 +7,7 @@ const protectedFilenames = new Set([
   'anasayfa-kapak-1.png',
   'anasayfa-kapak-3.png',
   'anasayfa-kapak-4.png',
+  'hakkimizda.png',
   'hakkimizda.jpeg',
 ])
 

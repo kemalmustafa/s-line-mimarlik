@@ -38,16 +38,21 @@ export default async function AboutPage() {
     collection: 'media',
     overrideAccess: false,
     depth: 0,
-    limit: 1,
+    limit: 2,
     pagination: false,
-    where: { filename: { equals: 'hakkimizda.jpeg' } },
+    where: {
+      filename: {
+        in: ['hakkimizda.png', 'hakkimizda.jpeg'],
+      },
+    },
     select: { filename: true, updatedAt: true },
   })
-  const logo = docs[0]
+  const logo =
+    docs.find((media) => media.filename === 'hakkimizda.png') || docs[0]
   // The version changes only when this media record is updated.
   const logoSrc = logo?.filename
     ? `/api/media/file/${encodeURIComponent(logo.filename)}?v=${encodeURIComponent(logo.updatedAt)}`
-    : '/api/media/file/hakkimizda.jpeg'
+    : '/api/media/file/hakkimizda.png'
 
   return (
     <main className="bg-[#f4f2ed] text-[#202b33]">
