@@ -4,6 +4,10 @@ import { APIError, type CollectionConfig } from 'payload'
 const protectedFilenames = new Set([
   'WhatsApp Image 2026-09-05 at 18.42.12.jpeg',
   'anasayfa-kapak.png',
+  'anasayfa-kapak-1.png',
+  'anasayfa-kapak-3.png',
+  'anasayfa-kapak-4.png',
+  'hakkimizda.jpeg',
 ])
 
 export const Media: CollectionConfig = {
@@ -79,7 +83,7 @@ export const Media: CollectionConfig = {
           )
         }
 
-        // Hizmet kartı kapağı ve hizmetlerin alt başlık galerileri kontrolü.
+        // Hizmet kartı kapağı ve hizmet galerileri kontrolü.
         const serviceReferences = await req.payload.find({
           collection: 'services',
           req,
@@ -93,6 +97,7 @@ export const Media: CollectionConfig = {
           where: {
             or: [
               { cover: { equals: id } },
+              { images: { equals: id } },
               { 'serviceSections.images': { equals: id } },
             ],
           },
