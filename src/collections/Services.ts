@@ -70,11 +70,22 @@ export const Services: CollectionConfig = {
             },
             {
               name: 'description',
-              label: 'Kısa açıklama',
+              label: 'Hizmet açıklaması',
               type: 'richText',
               admin: {
                 description:
-                  'İsteğe bağlıdır; hizmet başlığının altında görünür.',
+                  'İsteğe bağlıdır; hizmet başlığının altında görünür. Alt başlığı olmayan hizmetlerde ana metni buraya ekleyin.',
+              },
+            },
+            {
+              name: 'images',
+              label: 'Genel fotoğraflar',
+              type: 'upload',
+              relationTo: 'media',
+              hasMany: true,
+              admin: {
+                description:
+                  'Alt başlığı olmayan hizmetlerin fotoğraflarını buraya ekleyin.',
               },
             },
           ],
@@ -105,6 +116,15 @@ export const Services: CollectionConfig = {
                   required: true,
                   admin: {
                     placeholder: 'Örneğin: Betopan',
+                  },
+                },
+                {
+                  name: 'description',
+                  label: 'Alt başlık açıklaması',
+                  type: 'richText',
+                  admin: {
+                    description:
+                      'Bu alt başlığın altında görünür. Metin eklemek istemezseniz boş bırakabilirsiniz.',
                   },
                 },
                 {

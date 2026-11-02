@@ -256,7 +256,7 @@ export interface Service {
    */
   category?: string | null;
   /**
-   * İsteğe bağlıdır; hizmet başlığının altında görünür.
+   * İsteğe bağlıdır; hizmet başlığının altında görünür. Alt başlığı olmayan hizmetlerde ana metni buraya ekleyin.
    */
   description?: {
     root: {
@@ -274,11 +274,33 @@ export interface Service {
     [k: string]: unknown;
   } | null;
   /**
+   * Alt başlığı olmayan hizmetlerin fotoğraflarını buraya ekleyin.
+   */
+  images?: (number | Media)[] | null;
+  /**
    * Her alt başlığa bir veya birden fazla fotoğraf ekleyebilirsiniz.
    */
   serviceSections?:
     | {
         title: string;
+        /**
+         * Bu alt başlığın altında görünür. Metin eklemek istemezseniz boş bırakabilirsiniz.
+         */
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
         /**
          * Bir veya birden fazla fotoğraf seçebilirsiniz.
          */
@@ -477,10 +499,12 @@ export interface ServicesSelect<T extends boolean = true> {
   cover?: T;
   category?: T;
   description?: T;
+  images?: T;
   serviceSections?:
     | T
     | {
         title?: T;
+        description?: T;
         images?: T;
         id?: T;
       };

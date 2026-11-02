@@ -96,6 +96,8 @@ export default async function ServiceDetailPage({
 
   if (!service) notFound()
 
+  const generalPhotos = getGalleryPhotos(service.images, service.title)
+
   return (
     <main className="min-h-screen bg-[#f4f2ed] px-6 py-10 text-[#202b33] md:px-12 md:py-16">
       <div className="mx-auto max-w-6xl">
@@ -127,6 +129,15 @@ export default async function ServiceDetailPage({
         </header>
 
         <div className="divide-y divide-[#d8d0c2]">
+          {generalPhotos.length > 0 && (
+            <section className="py-12 md:py-16">
+              <ServiceGallery
+                heading={`${service.title} fotoğrafları`}
+                photos={generalPhotos}
+              />
+            </section>
+          )}
+
           {(service.serviceSections || []).map((section, index) => {
             const photos = getGalleryPhotos(
               section.images,
@@ -151,6 +162,12 @@ export default async function ServiceDetailPage({
                     >
                       {section.title}
                     </h2>
+
+                    {section.description && (
+                      <div className="project-description mt-5 max-w-2xl text-[#69665f]">
+                        <RichText data={section.description} />
+                      </div>
+                    )}
 
                     <ServiceGallery
                       heading={section.title}
